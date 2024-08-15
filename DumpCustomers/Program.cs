@@ -3,11 +3,11 @@ using Cordwell.EmailService.API.Connector;
 using CsvHelper;
 using System.Globalization;
 
-var appId = "cordwells";
-var appKey = "mopaprlfrUthastocrlhu2lwacecrapl";
-var apiUrl = "http://cordwell.api.concretego.com/webcreteapi.asmx";
-var user = "james@cordwells.com.au";
-var pass = "Crushers31!";
+var appId = "";
+var appKey = "";
+var apiUrl = "";
+var user = "";
+var pass = "";
 
 Console.WriteLine("Starting export.");
 
