@@ -7,6 +7,7 @@ namespace Cordwell.EmailService.Webapp.Models {
         public string customerId { get; set; }
         public string name { get; set; }
         public string email { get; set; }
+        public string emailTwo { get; set; }
         public ICollection<Order>? orders { get; set; } = new List<Order>();
 
     }
