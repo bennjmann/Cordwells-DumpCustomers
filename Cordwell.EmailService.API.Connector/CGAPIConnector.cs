@@ -1,4 +1,5 @@
-﻿using Cordwell.EmailService.API.Connector.Models;
+﻿using Cordwell.ConcreteGo.API.Connector.Models;
+using Cordwell.EmailService.API.Connector.Models;
 using System.Security.Cryptography;
 using System.ServiceModel;
 using System.Text;
@@ -94,7 +95,7 @@ namespace Cordwell.EmailService.API.Connector
 
         #region Tickets
 
-        public async Task<List<TicketRet>> ListTicketsByDateAsync(DateTime _fromDate, DateTime _toDate)
+       public async Task<List<TicketRet>> ListTicketsByDateAsync(DateTime _fromDate, DateTime _toDate)
         {
             //Ensure full date range with times.
             var fromDate = new DateTime(_fromDate.Year, _fromDate.Month, _fromDate.Day);

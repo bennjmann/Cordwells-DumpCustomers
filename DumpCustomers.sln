@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DumpCustomers", "DumpCustom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cordwell.EmailService.API.Connector", "Cordwell.EmailService.API.Connector\Cordwell.EmailService.API.Connector.csproj", "{C651A148-A36A-494A-9793-685D6B548141}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketQuery", "TicketQuery\TicketQuery.csproj", "{55CF1F6C-9A80-4DC2-BB58-7A2115F510F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{C651A148-A36A-494A-9793-685D6B548141}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C651A148-A36A-494A-9793-685D6B548141}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C651A148-A36A-494A-9793-685D6B548141}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55CF1F6C-9A80-4DC2-BB58-7A2115F510F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55CF1F6C-9A80-4DC2-BB58-7A2115F510F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55CF1F6C-9A80-4DC2-BB58-7A2115F510F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55CF1F6C-9A80-4DC2-BB58-7A2115F510F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

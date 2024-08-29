@@ -5,28 +5,227 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace Cordwell.EmailService.API.Connector.Models
+namespace Cordwell.ConcreteGo.API.Connector.Models
 {
-    [XmlRoot(ElementName = "TicketQueryRs")]
-    public class TicketQueryRs
+    [XmlRoot(ElementName = "Product")]
+    public class Product
     {
 
-        [XmlElement(ElementName = "TicketRet")]
-        public List<TicketRet> TicketRet { get; set; }
+        [XmlElement(ElementName = "ProductID")]
+        public int ProductID { get; set; }
 
-        [XmlAttribute(AttributeName = "statusCode")]
-        public string StatusCode { get; set; }
+        [XmlElement(ElementName = "ItemID")]
+        public int ItemID { get; set; }
 
-        [XmlAttribute(AttributeName = "statusSeverity")]
-        public string StatusSeverity { get; set; }
+        [XmlElement(ElementName = "ItemCode")]
+        public string ItemCode { get; set; }
 
-        [XmlAttribute(AttributeName = "statusMessage")]
-        public string StatusMessage { get; set; }
+        [XmlElement(ElementName = "Description")]
+        public string Description { get; set; }
 
-        [XmlText]
-        public string Text { get; set; }
+        [XmlElement(ElementName = "ShortDescription")]
+        public string ShortDescription { get; set; }
+
+        [XmlElement(ElementName = "IsMix")]
+        public bool IsMix { get; set; }
+
+        [XmlElement(ElementName = "IsAssoc")]
+        public bool IsAssoc { get; set; }
+
+        [XmlElement(ElementName = "ChargeType")]
+        public int ChargeType { get; set; }
+
+        [XmlElement(ElementName = "Price")]
+        public decimal Price { get; set; }
+
+        [XmlElement(ElementName = "PriceUnit")]
+        public string PriceUnit { get; set; }
+
+        [XmlElement(ElementName = "OrderQty")]
+        public string _OrderQty { get; set; }
+
+        [XmlIgnore]
+        public double? OrderQty
+        {
+            get
+            {
+                double value;
+                if (double.TryParse(_OrderQty, out value))
+                {
+                    return value;
+                }
+                return null;
+            }
+        }
+
+
+        [XmlElement(ElementName = "OrderQtyUnit")]
+        public string OrderQtyUnit { get; set; }
+
+        [XmlElement(ElementName = "LoadQty")]
+        public string _LoadQty { get; set; }
+
+        [XmlIgnore]
+        public double? LoadQty
+        {
+            get
+            {
+                double value;
+                if (double.TryParse(_LoadQty, out value))
+                {
+                    return value;
+                }
+                return null;
+            }
+        }
+
+        [XmlElement(ElementName = "DelvQty")]
+        public decimal DelvQty { get; set; }
+
+        [XmlElement(ElementName = "DelvQtyUnit")]
+        public string DelvQtyUnit { get; set; }
+
+        [XmlElement(ElementName = "AccDelvQty")]
+        public string _AccDelvQty { get; set; }
+
+        [XmlIgnore]
+        public double? AccDelvQty
+        {
+            get
+            {
+                double value;
+                if (double.TryParse(_AccDelvQty, out value))
+                {
+                    return value;
+                }
+                return null;
+            }
+        }
+
+        [XmlElement(ElementName = "PreQty")]
+        public string _PreQty { get; set; }
+
+        [XmlIgnore]
+        public double? PreQty
+        {
+            get
+            {
+                double value;
+                if (double.TryParse(_PreQty, out value))
+                {
+                    return value;
+                }
+                return null;
+            }
+        }
+
+        [XmlElement(ElementName = "TicketQty")]
+        public string _TicketQty { get; set; }
+
+        [XmlIgnore]
+        public decimal? TicketQty
+        {
+            get
+            {
+                decimal value;
+                if (decimal.TryParse(_TicketQty, out value))
+                {
+                    return value;
+                }
+                return null;
+            }
+        }
+
+        [XmlElement(ElementName = "TicketQtyUnit")]
+        public string TicketQtyUnit { get; set; }
+
+        [XmlElement(ElementName = "PriceQty")]
+        public decimal PriceQty { get; set; }
+
+        [XmlElement(ElementName = "PriceQtyUnit")]
+        public string PriceQtyUnit { get; set; }
+
+        [XmlElement(ElementName = "Slump")]
+        public string _Slump { get; set; }
+
+        [XmlIgnore]
+        public int? Slump
+        {
+            get
+            {
+                int value;
+                if (int.TryParse(_Slump, out value))
+                {
+                    return value;
+                }
+                return null;
+            }
+        }
+
+        [XmlElement(ElementName = "TrimPercent")]
+        public string _TrimPercent { get; set; }
+
+        [XmlIgnore]
+        public double? TrimPercent
+        {
+            get
+            {
+                double value;
+                if (double.TryParse(_TrimPercent, out value))
+                {
+                    return value;
+                }
+                return null;
+            }
+        }
+
+        [XmlElement(ElementName = "TradeDiscountable")]
+        public bool TradeDiscountable { get; set; }
+
+        [XmlElement(ElementName = "Taxable")]
+        public string Taxable { get; set; }
+
+        [XmlElement(ElementName = "Tax1")]
+        public double Tax1 { get; set; }
+
+        [XmlElement(ElementName = "Tax2")]
+        public double Tax2 { get; set; }
+
+        [XmlElement(ElementName = "Tax3")]
+        public double Tax3 { get; set; }
+
+        [XmlElement(ElementName = "Tax4")]
+        public double Tax4 { get; set; }
+
+        [XmlElement(ElementName = "Tax5")]
+        public double Tax5 { get; set; }
+
+        [XmlElement(ElementName = "TaxAmount")]
+        public double TaxAmount { get; set; }
+
+        [XmlElement(ElementName = "Amount")]
+        public double Amount { get; set; }
+
+        [XmlElement(ElementName = "AccountLinkCode")]
+        public string AccountLinkCode { get; set; }
     }
-    
+
+    [XmlRoot(ElementName = "Products")]
+    public class Products
+    {
+
+        [XmlElement(ElementName = "Product")]
+        public List<Product> Product { get; set; }
+    }
+
+    [XmlRoot(ElementName = "BatchResult")]
+    public class BatchResult
+    {
+
+        [XmlElement(ElementName = "BatchWeight")]
+        public BatchWeight BatchWeight { get; set; }
+    }
+
     [XmlRoot(ElementName = "TicketRet")]
     public class TicketRet
     {
@@ -61,7 +260,7 @@ namespace Cordwell.EmailService.API.Connector.Models
         public string PricingPlantCode { get; set; }
 
         [XmlElement(ElementName = "TicketCode")]
-        public int TicketCode { get; set; }
+        public string TicketCode { get; set; }
 
         [XmlElement(ElementName = "OrderDate")]
         public string _OrderDate { get; set; }
@@ -516,226 +715,7 @@ namespace Cordwell.EmailService.API.Connector.Models
         [XmlElement(ElementName = "BatchResult")]
         public BatchResult BatchResult { get; set; }
     }
-    
-    [XmlRoot(ElementName = "Product")]
-    public class Product
-    {
 
-        [XmlElement(ElementName = "ProductID")]
-        public int ProductID { get; set; }
-
-        [XmlElement(ElementName = "ItemID")]
-        public int ItemID { get; set; }
-
-        [XmlElement(ElementName = "ItemCode")]
-        public string ItemCode { get; set; }
-
-        [XmlElement(ElementName = "Description")]
-        public string Description { get; set; }
-
-        [XmlElement(ElementName = "ShortDescription")]
-        public string ShortDescription { get; set; }
-
-        [XmlElement(ElementName = "IsMix")]
-        public bool IsMix { get; set; }
-
-        [XmlElement(ElementName = "IsAssoc")]
-        public bool IsAssoc { get; set; }
-
-        [XmlElement(ElementName = "ChargeType")]
-        public int ChargeType { get; set; }
-
-        [XmlElement(ElementName = "Price")]
-        public decimal Price { get; set; }
-
-        [XmlElement(ElementName = "PriceUnit")]
-        public string PriceUnit { get; set; }
-
-        [XmlElement(ElementName = "OrderQty")]
-        public string _OrderQty { get; set; }
-
-        [XmlIgnore]
-        public double? OrderQty
-        {
-            get
-            {
-                double value;
-                if (double.TryParse(_OrderQty, out value))
-                {
-                    return value;
-                }
-                return null;
-            }
-        }
-
-
-        [XmlElement(ElementName = "OrderQtyUnit")]
-        public string OrderQtyUnit { get; set; }
-
-        [XmlElement(ElementName = "LoadQty")]
-        public string _LoadQty { get; set; }
-
-        [XmlIgnore]
-        public double? LoadQty
-        {
-            get
-            {
-                double value;
-                if (double.TryParse(_LoadQty, out value))
-                {
-                    return value;
-                }
-                return null;
-            }
-        }
-
-        [XmlElement(ElementName = "DelvQty")]
-        public decimal DelvQty { get; set; }
-
-        [XmlElement(ElementName = "DelvQtyUnit")]
-        public string DelvQtyUnit { get; set; }
-
-        [XmlElement(ElementName = "AccDelvQty")]
-        public string _AccDelvQty { get; set; }
-
-        [XmlIgnore]
-        public double? AccDelvQty
-        {
-            get
-            {
-                double value;
-                if (double.TryParse(_AccDelvQty, out value))
-                {
-                    return value;
-                }
-                return null;
-            }
-        }
-
-        [XmlElement(ElementName = "PreQty")]
-        public string _PreQty { get; set; }
-
-        [XmlIgnore]
-        public double? PreQty
-        {
-            get
-            {
-                double value;
-                if (double.TryParse(_PreQty, out value))
-                {
-                    return value;
-                }
-                return null;
-            }
-        }
-
-        [XmlElement(ElementName = "TicketQty")]
-        public string _TicketQty { get; set; }
-
-        [XmlIgnore]
-        public decimal? TicketQty
-        {
-            get
-            {
-                decimal value;
-                if (decimal.TryParse(_TicketQty, out value))
-                {
-                    return value;
-                }
-                return null;
-            }
-        }
-
-        [XmlElement(ElementName = "TicketQtyUnit")]
-        public string TicketQtyUnit { get; set; }
-
-        [XmlElement(ElementName = "PriceQty")]
-        public decimal PriceQty { get; set; }
-
-        [XmlElement(ElementName = "PriceQtyUnit")]
-        public string PriceQtyUnit { get; set; }
-
-        [XmlElement(ElementName = "Slump")]
-        public string _Slump { get; set; }
-
-        [XmlIgnore]
-        public int? Slump
-        {
-            get
-            {
-                int value;
-                if (int.TryParse(_Slump, out value))
-                {
-                    return value;
-                }
-                return null;
-            }
-        }
-
-        [XmlElement(ElementName = "TrimPercent")]
-        public string _TrimPercent { get; set; }
-
-        [XmlIgnore]
-        public double? TrimPercent
-        {
-            get
-            {
-                double value;
-                if (double.TryParse(_TrimPercent, out value))
-                {
-                    return value;
-                }
-                return null;
-            }
-        }
-
-        [XmlElement(ElementName = "TradeDiscountable")]
-        public bool TradeDiscountable { get; set; }
-
-        [XmlElement(ElementName = "Taxable")]
-        public string Taxable { get; set; }
-
-        [XmlElement(ElementName = "Tax1")]
-        public double Tax1 { get; set; }
-
-        [XmlElement(ElementName = "Tax2")]
-        public double Tax2 { get; set; }
-
-        [XmlElement(ElementName = "Tax3")]
-        public double Tax3 { get; set; }
-
-        [XmlElement(ElementName = "Tax4")]
-        public double Tax4 { get; set; }
-
-        [XmlElement(ElementName = "Tax5")]
-        public double Tax5 { get; set; }
-
-        [XmlElement(ElementName = "TaxAmount")]
-        public double TaxAmount { get; set; }
-
-        [XmlElement(ElementName = "Amount")]
-        public double Amount { get; set; }
-
-        [XmlElement(ElementName = "AccountLinkCode")]
-        public string AccountLinkCode { get; set; }
-    }
-
-    [XmlRoot(ElementName = "Products")]
-    public class Products
-    {
-
-        [XmlElement(ElementName = "Product")]
-        public List<Product> Product { get; set; }
-    }
-
-    [XmlRoot(ElementName = "BatchResult")]
-    public class BatchResult
-    {
-
-        [XmlElement(ElementName = "BatchWeight")]
-        public BatchWeight BatchWeight { get; set; }
-    }
-    
     [XmlRoot(ElementName = "Material")]
     public class Material
     {
@@ -784,6 +764,24 @@ namespace Cordwell.EmailService.API.Connector.Models
         public List<Material> Material { get; set; }
     }
 
+    [XmlRoot(ElementName = "TicketQueryRs")]
+    public class TicketQueryRs
+    {
 
-    
+        [XmlElement(ElementName = "TicketRet")]
+        public List<TicketRet> TicketRet { get; set; }
+
+        [XmlAttribute(AttributeName = "statusCode")]
+        public string StatusCode { get; set; }
+
+        [XmlAttribute(AttributeName = "statusSeverity")]
+        public string StatusSeverity { get; set; }
+
+        [XmlAttribute(AttributeName = "statusMessage")]
+        public string StatusMessage { get; set; }
+
+        [XmlText]
+        public string Text { get; set; }
+    }
+
 }

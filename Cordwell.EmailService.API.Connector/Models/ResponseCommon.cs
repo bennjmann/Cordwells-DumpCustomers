@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using Cordwell.ConcreteGo.API.Connector.Models;
+using System.Xml.Serialization;
 
 namespace Cordwell.EmailService.API.Connector.Models {
         [XmlRoot(ElementName = "WebcreteXMLMsgsRs")]
