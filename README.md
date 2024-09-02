@@ -45,7 +45,7 @@ controls the export location by modifying this piece of code:
 
 ```
 To pull new hotness from the public repo:
-cd private-repo
+cd solution-location
 git remote add public https://github.com/dev-dave-s/ConcreteGo.SDK.git
 git pull public github-branch # Creates a merge commit
 Push the Update.
