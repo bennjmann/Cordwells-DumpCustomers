@@ -16,6 +16,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\ConcreteGo.SDK\ConcreteGo.SDK.Models\ConcreteGo.SDK.Models.csproj" />
+      <ProjectReference Include="..\ConcreteGo.SDK\ConcreteGo.SDK.Webcrete\ConcreteGo.SDK.Webcrete.csproj" />
       <ProjectReference Include="..\ConcreteGo.SDK\ConcreteGo.SDK\ConcreteGo.SDK.csproj" />
     </ItemGroup>
 
