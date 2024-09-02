@@ -1,32 +1,34 @@
-﻿using Cordwell.ConcreteGo.ExportTicketsUtility;
-using Cordwell.EmailService.API.Connector;
+﻿using ConcreteGo.SDK;
+using Cordwell.ConcreteGo.ExportTicketsUtility;
 using CsvHelper;
 using System.Globalization;
 
-var appId = "";
-var appKey = "";
-var apiUrl = "";
-var user = "";
-var pass = "";
+
+var cgClient = new ConcreteGoClient(
+    "", 
+    "", 
+    "", 
+    "", 
+    ""
+    );
 
 Console.WriteLine("Starting export.");
-
-var start = new DateTime(2024, 1, 5);
+var start = new DateTime(2024, 9, 1); // month max
 var end = DateTime.Now;
 
-var cgConnector = new CGAPIConnector(appId, appKey, user, pass, apiUrl);
-await cgConnector.LoginAsync();
 
-var customers = await cgConnector.ListOrdersByOrderDateAsync(start, end);
+var customers = await cgClient.GetOrdersAsync(o => {
+    o.IncludeRetElements = ["USERDEFINEDFIELD"];
+    o.FromOrderDate = start;
+    o.ToOrderDate = end;
+});
 
-var runData = await Processor.ConvertCgOrderToOrderData(customers, cgConnector);
 
-using (var writer = new StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +"/Exported Tickets " + start.ToString("dd-MM-yyyy") + " to " + end.ToString("dd-MM-yyyy") + ".csv"))
-using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
-{
-    csv.WriteRecords(runData);
+var customersData = await Processor.ConvertCgOrderToOrderData(customers);
+
+await using (var writer = new StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +"/Exported Tickets " + start.ToString("dd-MM-yyyy") + " to " + end.ToString("dd-MM-yyyy") + ".csv"))
+await using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture)) {
+    csv.WriteRecords(customersData);
 }
-
-await cgConnector.LogoutAsync();
 
 Console.WriteLine("Done.");

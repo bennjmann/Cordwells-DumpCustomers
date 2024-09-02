@@ -14,7 +14,7 @@ namespace Cordwell.EmailService.Webapp.Models {
     [Table("order")]
     public class Order {
         
-        public int orderId { get; set; }
+        public int? orderId { get; set; }
         public DateTime date { get; set; }
         public Customer customer { get; set; } = null!;
 

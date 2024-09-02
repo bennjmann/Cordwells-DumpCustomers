@@ -12,11 +12,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Cordwell.EmailService.API.Connector\Cordwell.EmailService.API.Connector.csproj" />
+      <PackageReference Include="CsvHelper" Version="33.0.1" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="CsvHelper" Version="33.0.1" />
+      <ProjectReference Include="..\ConcreteGo.SDK\ConcreteGo.SDK\ConcreteGo.SDK.csproj" />
     </ItemGroup>
 
 </Project>

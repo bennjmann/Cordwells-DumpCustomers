@@ -3,6 +3,7 @@
   <component name="UserContentModel">
     <attachedFolders />
     <explicitIncludes>
+      <Path>ConcreteGo.SDK/README.md</Path>
       <Path>README.md</Path>
     </explicitIncludes>
     <explicitExcludes />

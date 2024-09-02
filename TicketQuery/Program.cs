@@ -1,32 +1,39 @@
-﻿using Cordwell.EmailService.API.Connector;
+﻿using ConcreteGo.SDK;
 using CsvHelper;
 using System.Globalization;
 using TicketQuery;
 
-var appId = "";
-var appKey = "";
-var apiUrl = ""; 
-var user = "";
-var pass = "";
+var cgClient = new ConcreteGoClient(
+    "", 
+    "", 
+    "", 
+    "", 
+    ""
+);
 
 Console.WriteLine("Starting export.");
 
-var start = new DateTime(2024, 07, 01);
+var start = new DateTime(2024, 08, 02);
 var end = DateTime.Now;
 
-var cgConnector = new CGAPIConnector(appId, appKey, user, pass, apiUrl);
-await cgConnector.LoginAsync();
+var tickets = await cgClient.GetTicketsAsync(o => {
+    o.FromOrderDate = start;
+    o.ToOrderDate = end;
+});
 
-var tickets = await cgConnector.ListTicketsByOrderDateAsync(start, end);
+if (tickets == null) {
+    Console.WriteLine("No Tickets Found.");
+    Console.WriteLine("Done.");
+    return;
+}
 
 var runData = await Processor.ConvertCgTicketsToRunData(tickets);
 
-using (var writer = new StreamWriter(@"godata.csv"))
-using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+await using (var writer = new StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +"/Tickets " + start.ToString("dd-MM-yyyy") + " to " + end.ToString("dd-MM-yyyy") + ".csv"))
+await using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
 {
     csv.WriteRecords(runData);
 }
 
-await cgConnector.LogoutAsync();
 
 Console.WriteLine("Done.");

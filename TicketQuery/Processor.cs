@@ -1,23 +1,15 @@
-﻿using Cordwell.ConcreteGo.API.Connector.Models;
+﻿using ConcreteGo.SDK.Models.Tickets;
 using Cordwell.ConcreteGo.ExportTicketsUtility.Models;
-using Cordwell.EmailService.API.Connector.Models;
 
 namespace TicketQuery
 {
     public class Processor
     {
-       public static async Task<List<RunData>> ConvertCgTicketsToRunData(List<TicketRet> ticketData)
+       public static Task<List<RunData>> ConvertCgTicketsToRunData(List<TicketRet> ticketData)
         {
             var result = new List<RunData>();
-            //var concreteGoAPI = new CGAPIConnector(_CGUser, _CGPass);
-            //await concreteGoAPI.LoginAsync();
-
-            if (ticketData != null)
-            {
-                foreach (var ticket in ticketData)
-                {
-                    foreach (var product in ticket.Products.Product)
-                    {
+                foreach (var ticket in ticketData) {
+                    foreach (var product in ticket.Products.Product) {
                         var runItem = new RunData
                         {
                             Ship_Date = (DateTime)ticket.PrintedTime,
@@ -68,7 +60,7 @@ namespace TicketQuery
                             runItem.MyobItemNumber = "6" + runItem.Account_Link_Code;
                         }
                        
-                        if (product.IsMix)
+                        if (product.IsMix == true)
                         {
                             runItem.Product_Type_ID = 1;
                         }
@@ -76,20 +68,13 @@ namespace TicketQuery
                         {
                             runItem.Product_Type_ID = 5;
                         }
-
-                        //var custDetails = await concreteGoAPI.GetCustomerByCustomerCode(ticket.CustomerCode);
-                        //var returnCustomer = custDetails.WebcreteXMLMsgsRs.CustomerQueryRs.CustomerRet.First();
-
                         result.Add(runItem);
                     }
                     
+                    
+                    //TODO Check for any nulls. If there is a null return location.
                 }
-                //await concreteGoAPI.LogoutAsync();
-                return result;
-            }
-
-            return null;
-
+                return Task.FromResult(result);
         }
         
     }
