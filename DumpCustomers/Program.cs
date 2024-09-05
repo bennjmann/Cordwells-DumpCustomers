@@ -13,7 +13,7 @@ var cgClient = new ConcreteGoClient(
     );
 
 Console.WriteLine("Starting export.");
-var start = new DateTime(2024, 9, 1); // month max
+var start = new DateTime(2024, 6, 1); // month max
 var end = DateTime.Now;
 
 
